@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SuperSprinter!!!</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+
+<a href="{{ url_for("index") }}">Go back to Main Menu</a><br>
+
+<h3>Id:</h3><h4>{{ story[headers[0]] }}</h4><br>
+<h3>Story Title:</h3><h4>{{ story[headers[1]] }}</h4><br>
+<h3>User Story:</h3><h4>{{ story[headers[2]] }}</h4><br>
+<h3>Acceptance Criteria:</h3><h4>{{ story[headers[3]] }}</h4><br>
+<h3>Business Value:</h3><h4>{{ story[headers[4]] }}</h4><br>
+<h3>Estimation:</h3><h4>{{ story[headers[5]] }}</h4><br>
+<h3>Status:</h3><h4>{{ story[headers[6]] }}</h4><br>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new story</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+<a href="{{ url_for("index") }}">Go back to Main Menu</a><br>
+
+{% if story[headers[0]] == None %}
+    <form method="post" action="{{ url_for("add_story") }}">
+{% else %}
+    <form method="post" action="{{ url_for("edit_story", story_id = story[headers[0]]) }}">
+{% endif %}
+
+<label for="{{ headers[1] }}">Please insert {{ headers[1] }}</label>
+<input type="text" value="{{ story[headers[1]] }}" name="{{ headers[1] }}" id="{{ headers[1] }}">
+<br>
+
+<label for="{{ headers[2] }}">Please insert {{ headers[2] }}</label>
+<input type="text" value="{{ story[headers[2]] }}" name="{{ headers[2] }}" id="{{ headers[2] }}">
+<br>
+
+<label for="{{ headers[3] }}">Please insert {{ headers[3] }}</label>
+<input type="text" value="{{ story[headers[3]] }}" name="{{ headers[3] }}" id="{{ headers[3] }}">
+<br>
+
+<label for="{{ headers[4] }}">Please choose {{ headers[4] }}</label>
+<input type="number" min="1" max="100" value="{{ story[headers[4]] }}" name="{{ headers[4] }}" id="{{ headers[4] }}">
+<br>
+
+<label for="{{ headers[5] }}">Please choose {{ headers[5] }}</label>
+<input type="number" min="1" max="40" value="{{ story[headers[5]] }}" name="{{ headers[5] }}" id="{{ headers[5] }}">
+<br>
+
+{% if story[headers[0]] != None %}
+    <label for="{{ headers[6] }}">{{ headers[6] }}</label>
+    <select name="{{ headers[6] }}" id="{{ headers[6] }}">
+        {% for status in statuses %}
+            {% if status == story[headers[6]] %}
+                <option value="{{ status }}" selected="selected">{{ status }}</option>
+            {% else %}
+                <option value="{{ status }}">{{ status }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+    <br>
+{% endif %}
+
+{% if story[headers[0]] == None %}
+    <input type="submit" value="Add new Story">
+{% else %}
+    <input type="submit" value="Edit Story">
+{% endif %}
+</form>
+</body>
+</html>
